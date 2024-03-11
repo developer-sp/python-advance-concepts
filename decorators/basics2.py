@@ -15,6 +15,8 @@ def my_logger(func):
     @functools.wraps(func)  # Ensure that metadata of 'func' is preserved
     def wrapper(*args, **kwargs):
         print(f"Calling function {func.__name__}")
+        # to check the arguments and keyword arguments
+        print(args,kwargs)
         result = func(*args, **kwargs)
         print(f"Function {func.__name__} finished execution")
         return result
@@ -29,3 +31,4 @@ def example_function(x, y):
 # Calling the decorated function
 print(example_function.__name__)  # Output: example_function
 print(example_function.__doc__)   # Output: This is an example function.
+print(example_function(5,10))
