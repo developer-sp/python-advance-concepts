@@ -11,7 +11,8 @@ def fib(n):
         return 1
     else:
         return fib(n-1) + fib(n-2)
-    
+
+print("Functools cache\n")  
 # no previously cached result, so it will make 11 calls to the function
 start = time.time()
 res = fib(10)
@@ -45,7 +46,8 @@ def fibannoci(n):
         return 1
     else:
         return fibannoci(n-1) + fibannoci(n-2)
-    
+
+print("Functools lru_cache\n")    
 # no previously cached result, so it will make 11 calls to the function
 start = time.time()
 res = fibannoci(10)
@@ -61,3 +63,34 @@ start = time.time()
 res = fibannoci(15)
 end = time.time()
 print("Time taken to calculate fibonacci series for value 15: ", end - start,"\n")
+
+
+# ------------------ functools total_ordering ----------------
+from functools import total_ordering
+import time
+
+'''
+In total_ordering we mmust define at least one ordering operation: < > <= >=
+If we define just one ordering operation then we can use it for any comparison operation
+
+Try commenting the decorator and see the difference in output
+You will notice that only __lt__ will be called and all others will
+return NotImplementedError or TypeError saying operation not supported
+'''
+@total_ordering
+class Number:
+    def __init__(self, num):
+        self.num = num
+    
+    def __lt__(self, other):
+        return self.num < other.num
+
+print("Functools total_ordering\n") 
+X = Number(10)
+Y = Number(20)
+print(X < Y) # False
+print(X > Y) # True
+print(X <= Y) # False
+print(X >= Y) # True
+print(X == Y) # False
+print(X!= Y) # True
