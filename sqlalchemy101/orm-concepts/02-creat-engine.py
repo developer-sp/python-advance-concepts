@@ -41,3 +41,5 @@ engine = create_engine("sqlite://", echo=True) # echo True will show the SQL Sta
 
 # Create all tables stored in this metadata.
 Base.metadata.create_all(engine)
+
+# in 03-insert-data, we will insert the data
