@@ -1,0 +1,10 @@
+[project]
+name = "testing_with_pytest"
+description = "An introduction to pytest"
+version = "0.1.0"
+authors = [
+    { name = "Luci" }
+]
+dependencies = [
+    "pytest ~= 8.3.2",
+]
