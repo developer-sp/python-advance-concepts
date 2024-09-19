@@ -98,3 +98,72 @@ except Exception as e:
 
 # this works because in class definition, the function takes self as parameter
 derived_object.print_hello_3()
+
+
+# ---------------------------- Types of Inheritence ---------------------
+
+# There are many types of inheritence. Above, we saw single inheritence
+
+# ----------------------------- Multiple Inheritence --------------
+
+class BaseClass1:
+    def __init__(self,val):
+        self.val = val
+
+class BaseClass2:
+    def __init__(self,val):
+        self.val = val
+
+class DerviedClassMixed(BaseClass1, BaseClass2):
+    def __init__(self):
+        BaseClass1.__init__(self, 10)
+        BaseClass2.__init__(self, 20)
+
+# the above and below are different
+# if both base classes have same function, then if we run the function
+# from derived class, the function of the base class that appeared first
+# in class definition will run. Here it will be BaseClass2's function
+class DerviedClassMixed2(BaseClass2, BaseClass1):
+    def __init__(self):
+        BaseClass1.__init__(self, 10)
+        BaseClass2.__init__(self, 20)
+
+derived_mixed = DerviedClassMixed()
+
+# -------------------------- Multi-Level Inheretence ------------------
+class BaseClass:
+    pass 
+
+class DerivedClass(BaseClass):
+    pass
+
+class DerivedDerivedClass(DerivedClass):
+    pass 
+
+# -------------------------- Hierarchical Inheritence --------------------
+# This is, when multiple classes inherit from same parent
+
+class BaseClass:
+    pass 
+
+class DerivedClass1(BaseClass):
+    pass
+
+class DerivedClass2(BaseClass):
+    pass
+
+# --------------------- Diamond Inheritence -----------------------
+# Its called diamond because it creates biamon shaped inheritence hierarchy
+# So its a hierarchical followed by multiple inheritence
+
+class BaseClass:
+    pass 
+
+class DerivedClass1(BaseClass):
+    pass
+
+class DerivedClass2(BaseClass):
+    pass
+
+class FinalClass(DerivedClass1, DerivedClass2):
+    pass
