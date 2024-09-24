@@ -136,3 +136,10 @@ except Exception as e:
 # ------------ Private Attributes can be only Accessed via Name Mangling.--------------------
 # More on Name Mangling in the name_mangling.py
 
+
+# ------------------ Final Notes --------------------------
+# 1. Although private members (declared with a double underscore prefix: __member) can be accessed anywhere in the program 
+# using name mangling, they should be accessed only within the class that defined it.
+
+# 2. Protected members (declared with a single underscore prefix: _member) can be accessed anywhere in the program directly with their name. 
+# However, they should be accessed only within the class that defined it and its subclasses.
